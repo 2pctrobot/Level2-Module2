@@ -1,8 +1,10 @@
 package _06_overloading;
 
 import java.io.IOException;
+import java.net.URL;
 
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,15 +19,34 @@ import javax.swing.JPanel;
  */
 public class LeagueOptionPane {
 	
-	public static void showMessageDialog(String message) {
+	public void showMessageDialog(String message) {
 		// 1. Open example.png and make a GUI that looks like that
 		//    The message parameter is what we want to show on our pop-up
-		
-		
+		JFrame frame = new JFrame();
+		JPanel panel = new JPanel();
+		JLabel label = new JLabel();
+		label = createLabelImage("league.png");
+		frame.add(panel);
+		panel.add(label);
+		frame.setVisible(true);
 		// 2. Uncomment the line of code below. It sets the location of our frame to the center of the screen
-		//frame.setLocationRelativeTo(null);
+		frame.setLocationRelativeTo(null);
 	}
+private JLabel createLabelImage(String fileName){
+		
+        Icon icon = createIcon(fileName);
+	JLabel imageLabel = new JLabel(icon);
+	return imageLabel;}
 	
+	private Icon createIcon(String fileName) {
+		URL imageURL = getClass().getResource(fileName);
+	if (imageURL == null){
+		System.err.println("Could not find image " + fileName);
+		return (Icon) new JLabel();
+	}
+	Icon icon = new ImageIcon(imageURL);
+		return icon;
+	}
 	// 3. Call this method in the Runner class
 	
 
