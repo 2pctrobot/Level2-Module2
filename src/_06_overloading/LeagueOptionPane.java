@@ -52,13 +52,14 @@ JLabel createLabelImage(String fileName){
 
 	// 4. Create another showMessageDialog() method that lets us also choose the Message and Title 
 	//    2 String parameters (one for the message and one for the title)
-	public void showMessageDialog(String message, int placeholder) {
+	public void showMessageDialog(String message, String png) {
 		// 1. Open example.png and make a GUI that looks like that
 		//    The message parameter is what we want to show on our pop-up
 		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
 		JLabel label = new JLabel();
-		label = createLabelImage("league.png");
+		label = createLabelImage(png);
+		frame.setTitle(message);  
 		frame.add(panel);
 		panel.add(label);
 		frame.setVisible(true);
@@ -66,7 +67,23 @@ JLabel createLabelImage(String fileName){
 		frame.setLocationRelativeTo(null);
 	}
 	// 5. Call this method in the Runner class
-	
+	public void showMessageDialog(String message, String png, String title) {
+		// 1. Open example.png and make a GUI that looks like that
+		//    The message parameter is what we want to show on our pop-up
+		JFrame frame = new JFrame();
+		JPanel panel = new JPanel();
+		JLabel label = new JLabel();
+		JLabel text = new JLabel();
+		label = createLabelImage(png);
+		text.setText(title);
+		frame.setTitle(message);  
+		frame.add(panel);
+		panel.add(label);
+		panel.add(text);
+		frame.setVisible(true);
+		// 2. Uncomment the line of code below. It sets the location of our frame to the center of the screen
+		frame.setLocationRelativeTo(null);
+	}	
 	
 	// 6. Create another showMessageDialog() method that lets us choose the Message, Title, and Image
 	//    3 String parameters (one for the message, one for the title, and one for the fileName)
