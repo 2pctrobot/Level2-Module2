@@ -26,7 +26,7 @@ public class LeagueSnake extends PApplet {
 
     @Override
     public void setup() {
-        
+    	
     }
 
     void dropFood() {
